@@ -1,0 +1,426 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   CONDUIT SENTINEL — Apple Industrial Design & Glassmorphism
+   Inspired by: Apple Hardware & Software Design (SF Pro, Clean Glass, Frosted Blur)
+   Principles:
+     • Frosted Glassmorphism with backdrop blur
+     • Disciplined radii (14px cards, 8px controls — NO curvy bubbly blocks)
+     • Zero emojis — crisp minimalist typography & vector icons
+     • Large Apple-style architectural typography
+     • Authentic Apple palette: #f5f5f7, #1d1d1f, #86868b, #0071e3
+───────────────────────────────────────────────────────────── */
+
+/* Base Reset */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  min-height: 100%;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f5f5f7; }
+::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #86868b; }
+
+/* ─── Apple Typography ─── */
+.apple-title {
+  font-size: clamp(38px, 5.2vw, 68px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: #1d1d1f;
+}
+
+.apple-stat {
+  font-size: clamp(48px, 5.5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #1d1d1f;
+  font-variant-numeric: tabular-nums;
+}
+
+.apple-subhead {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #86868b;
+}
+
+.apple-caption {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6e6e73;
+}
+
+/* ─── Apple Frosted Glass Cards (Refined 14px radius, NO curvy blocks) ─── */
+.apple-glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.apple-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+}
+
+/* Accent Card: Frosted Solar Amber */
+.apple-card-amber {
+  background: rgba(254, 240, 138, 0.35);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(234, 179, 8, 0.4);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(234, 179, 8, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card-amber:hover {
+  background: rgba(254, 240, 138, 0.5);
+  border-color: rgba(234, 179, 8, 0.6);
+  box-shadow: 0 8px 28px rgba(234, 179, 8, 0.14);
+}
+
+/* ─── Apple Segmented Controls ─── */
+.apple-segment-group {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 3px;
+  border-radius: 8px;
+  gap: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.apple-segment-btn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #6e6e73;
+  background: transparent;
+}
+
+.apple-segment-btn:hover {
+  color: #1d1d1f;
+}
+
+.apple-segment-btn.active {
+  background: #ffffff;
+  color: #1d1d1f;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Apple Badges (Disciplined 6px radius) ─── */
+.apple-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+  color: #1d1d1f;
+}
+
+.badge-blue {
+  background: rgba(0, 113, 227, 0.1);
+  color: #0071e3;
+  border-color: rgba(0, 113, 227, 0.2);
+}
+
+.badge-green {
+  background: rgba(52, 199, 89, 0.12);
+  color: #248a3d;
+  border-color: rgba(52, 199, 89, 0.25);
+}
+
+.badge-amber {
+  background: rgba(255, 159, 10, 0.12);
+  color: #b25e02;
+  border-color: rgba(255, 159, 10, 0.25);
+}
+
+.badge-red {
+  background: rgba(255, 59, 48, 0.1);
+  color: #d70015;
+  border-color: rgba(255, 59, 48, 0.2);
+}
+
+/* ─── Apple Buttons (Disciplined 8px radius) ─── */
+.apple-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.apple-btn-primary {
+  background: #0071e3;
+  color: #ffffff;
+}
+.apple-btn-primary:hover {
+  background: #0077ed;
+}
+
+.apple-btn-dark {
+  background: #1d1d1f;
+  color: #ffffff;
+}
+.apple-btn-dark:hover {
+  background: #333336;
+}
+
+.apple-btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1d1d1f;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+.apple-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Input ─── */
+.input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #1d1d1f;
+  outline: none;
+  transition: all 0.15s ease;
+}
+.input:focus {
+  border-color: #0071e3;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.18);
+  background: #ffffff;
+}
+
+/* ─── Status indicator dot ─── */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot.live {
+  background: #34c759;
+  box-shadow: 0 0 0 2.5px rgba(52, 199, 89, 0.25);
+}
+.status-dot.offline {
+  background: #ff3b30;
+  box-shadow: 0 0 0 2.5px rgba(255, 59, 48, 0.25);
+}
+
+/* ─── Nav links ─── */
+.nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6e6e73;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #1d1d1f;
+  background: rgba(0, 0, 0, 0.04);
+}
+.nav-link.active {
+  color: #1d1d1f;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Page header ─── */
+.page-header {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 32px;
+}
+
+/* ─── Chat Bubbles (Apple Messages Style) ─── */
+.chat-bubble-user {
+  background: #0071e3;
+  color: #ffffff;
+  border-radius: 14px 14px 2px 14px;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 113, 227, 0.2);
+}
+
+.chat-bubble-assistant {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #1d1d1f;
+  border-radius: 14px 14px 14px 2px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* Backward-compatibility bridge for existing classes */
+.card-tactile {
+  composes: apple-card;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-tactile:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+}
+
+.card-solar-yellow {
+  background: rgba(254, 240, 138, 0.35);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(234, 179, 8, 0.4);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(234, 179, 8, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-solar-yellow:hover {
+  background: rgba(254, 240, 138, 0.5);
+  border-color: rgba(234, 179, 8, 0.6);
+  box-shadow: 0 8px 28px rgba(234, 179, 8, 0.14);
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+  color: #1d1d1f;
+}
+
+.badge-yellow {
+  background: rgba(255, 159, 10, 0.12);
+  color: #b25e02;
+  border: 1px solid rgba(255, 159, 10, 0.25);
+}
+
+.badge-slate {
+  background: rgba(0, 0, 0, 0.04);
+  color: #475569;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.display-title {
+  font-size: clamp(38px, 5.2vw, 68px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: #1d1d1f;
+}
+
+.display-stat {
+  font-size: clamp(48px, 5.5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #1d1d1f;
+  font-variant-numeric: tabular-nums;
+}
+
+.label-xs {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #86868b;
+}
+
+.btn-yellow {
+  background: #0071e3;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.btn-yellow:hover {
+  background: #0077ed;
+}
+
+.btn-primary {
+  background: #1d1d1f;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.btn-primary:hover {
+  background: #333336;
+}
+
+/* Mobile nav scrollbar hide */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
